@@ -8,7 +8,12 @@
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
-      "environment": [],
+      "environment": [
+        {
+          "name": "DYLD_LIBRARY_PATH", //Untuk linux, gunakan LD_LIBRARY_PATH
+          "value": "../src"
+        }
+      ],
       "externalConsole": false,
       "MIMode": "lldb",
       "preLaunchTask": "Link active file"
