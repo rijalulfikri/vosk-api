@@ -1,0 +1,71 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build active file",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "-I../src",
+        "-c",
+        "${file}",
+        "-o",
+        "${fileBasenameNoExtension}.o"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": "build"
+    },
+    {
+      "label": "Link active file",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "${fileBasenameNoExtension}.o",
+        "-o",
+        "${fileBasenameNoExtension}",
+        "-L../src",
+        "-lvosk",
+        "-ldl",
+        "-lpthread",
+        "-Wl,-rpath,../src"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "dependsOn": "Build active file",
+      "group": "build"
+    },
+    {
+      "label": "Build All",
+      "type": "shell",
+      "dependsOn": ["Link active file"],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Clean active file",
+      "type": "shell",
+      "command": "rm",
+      "args": [
+        "-f",
+        "${fileBasenameNoExtension}.o",
+        "${fileBasenameNoExtension}"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": "build"
+    }
+  ]
+}

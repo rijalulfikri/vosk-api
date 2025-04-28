@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "name": "Mac",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/Volumes/F/vosk/opt/vosk-api/src",
+        "/Volumes/F/vosk/opt/kaldi/src",
+        "/Volumes/F/vosk/opt/kaldi/tools/openfst-1.8.0/include"
+      ],
+      "defines": [],
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "macos-clang-arm64",
+      "compilerPath": "/usr/bin/clang++"
+    }
+  ],
+  "version": 4
+}

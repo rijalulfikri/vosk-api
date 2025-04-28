@@ -1,0 +1,20 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "files.associations": {
+    "*.c": "c",
+    "*.h": "c"
+  },
+
+  // "emeraldwalk.runonsave": {
+  //   "commands": [
+  //     {
+  //       "match": ".*\\.c$",
+  //       // "cmd": "workbench.action.tasks.runTask",
+  //       "cmd": "gcc -c '${file}' -o '${fileDirname}/${fileBasenameNoExtension}' -Wall -Wextra -std=c11  -I/Volumes/F/vosk/opt/vosk-api/src"
+  //     }
+  //   ]
+  // },
+  "C_Cpp.default.compilerPath": "/usr/bin/clang++"
+}
