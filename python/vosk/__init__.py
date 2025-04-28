@@ -30,7 +30,7 @@ def open_dll():
     elif sys.platform == "linux":
         return _ffi.dlopen(os.path.join(dlldir, "libvosk.so"))
     elif sys.platform == "darwin":
-        return _ffi.dlopen(os.path.join(dlldir, "libvosk.dyld"))
+        return _ffi.dlopen(os.path.join(dlldir, "libvosk.so"))
     else:
         raise TypeError("Unsupported platform")
 
