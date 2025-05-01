@@ -47,8 +47,9 @@ target_compile_definitions(vosk PRIVATE
 )
 
 # Tambahkan include directories ke target 'vosk'
-target_include_directories(vosk PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR} # Direktori saat ini (.)
+target_include_directories(vosk PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    /Volumes/F/vosk/opt/vosk-api/src # Direktori saat ini (.)
     ${KALDI_ROOT}/src
     ${KALDI_ROOT}/tools/openfst/include
     ${OPENBLAS_ROOT}/include
@@ -101,7 +102,7 @@ target_link_libraries(vosk PRIVATE ${KALDI_LIBS})
 #          CMake biasanya menangani stripping secara terpisah (misalnya dengan 'strip' tool setelah build).
 #          Namun, untuk mereplikasi command line, kita tambahkan flag ini.
 target_link_options(vosk PRIVATE
-    -s
+    # -s #Opsional: Hapus simbol debug dari library akhir => membuat library tidak bisa di-debug
     -g
     #-fPIC # Umumnya tidak diperlukan di sini
 )
@@ -111,6 +112,13 @@ target_link_options(vosk PRIVATE
 
 # Opsional: Atur direktori output library jika tidak ingin di default build directory
 set_target_properties(vosk PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
+message(STATUS "Configuring Vosk Main Executable (vosk_main)")
+
+add_executable(vosk_main c/test_vosk.cc) # MyApp adalah nama target executable
+target_link_libraries(vosk_main PRIVATE vosk)
+
+
 
 # Opsional: Tambahkan pesan status
 message(STATUS "Configuring Vosk Library Build")
