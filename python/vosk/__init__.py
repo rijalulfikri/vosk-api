@@ -1,17 +1,18 @@
+import datetime
+import enum
+import json
 import os
 import sys
-import srt
-import datetime
-import json
-import enum
-
-import requests
+from pathlib import Path
+from re import match
 from urllib.request import urlretrieve
 from zipfile import ZipFile
-from re import match
-from pathlib import Path
-from .vosk_cffi import ffi as _ffi
+
+import requests
+import srt
 from tqdm import tqdm
+
+from .vosk_cffi import ffi as _ffi
 
 # Remote location of the models and local folders
 MODEL_PRE_URL = "https://alphacephei.com/vosk/models/"
@@ -30,7 +31,7 @@ def open_dll():
     elif sys.platform == "linux":
         return _ffi.dlopen(os.path.join(dlldir, "libvosk.so"))
     elif sys.platform == "darwin":
-        return _ffi.dlopen(os.path.join(dlldir, "libvosk.so"))
+        return _ffi.dlopen(os.path.join(dlldir, "libvosk.dylib"))
     else:
         raise TypeError("Unsupported platform")
 
