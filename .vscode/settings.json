@@ -16,5 +16,10 @@
   //     }
   //   ]
   // },
-  "C_Cpp.default.compilerPath": "/usr/bin/clang++"
+  "C_Cpp.default.compilerPath": "/usr/bin/clang++",
+  "cmake.configureSettings": {
+    // Variabel CMake lainnya mungkin ada di sini...
+
+    "CMAKE_PREFIX_PATH": "/Volumes/F/vosk/opt/kaldi"
+  }
 }

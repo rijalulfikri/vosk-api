@@ -6,6 +6,7 @@
       "type": "shell",
       "command": "gcc",
       "args": [
+        "-g",
         "-I../src",
         "-c",
         "${file}",
@@ -23,14 +24,15 @@
       "type": "shell",
       "command": "gcc",
       "args": [
+        "-g",
         "${fileBasenameNoExtension}.o",
         "-o",
         "${fileBasenameNoExtension}",
-        "-L../src",
+        "-L../build/lib",
         "-lvosk",
         "-ldl",
         "-lpthread",
-        "-Wl,-rpath,../src"
+        "-Wl,-rpath,/Volumes/F/vosk/opt/vosk-api/build/lib"
       ],
       "options": {
         "cwd": "${fileDirname}"

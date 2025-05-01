@@ -8,15 +8,28 @@
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
+      // "cwd": "${workspaceFolder}",
       "environment": [
         {
           "name": "DYLD_LIBRARY_PATH", //Untuk linux, gunakan LD_LIBRARY_PATH
-          "value": "../src"
+          "value": "/Volumes/F/vosk/opt/vosk-api/src"
         }
       ],
+      "additionalSOLibSearchPath": "/Volumes/F/vosk/opt/vosk-api/src",
       "externalConsole": false,
       "MIMode": "lldb",
-      "preLaunchTask": "Link active file"
+      "preLaunchTask": "Link active file",
+      "setupCommands": [
+        {
+          "description": "Add source directory for libvosk",
+          // PENTING: Ganti '../src' dengan path *aktual* ke folder
+          // yang berisi SOURCE CODE (.c, .h) dari library libvosk,
+          // relatif terhadap 'cwd' (${workspaceFolder}) atau path absolut.
+          "text": "settings append target.source-map /Volumes/F/vosk/opt/vosk-api/src",
+          // "text": "-enable-pretty-printing",
+          "ignoreFailures": true // Set ke 'true' jika path mungkin tidak selalu ada
+        }
+      ]
     }
   ],
   "version": "2.0.0"
