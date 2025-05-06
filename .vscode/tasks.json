@@ -21,7 +21,7 @@
     },
     {
       "label": "Link active file",
-      "type": "shell",
+      "type": "cppbuild",
       "command": "gcc",
       "args": [
         "-g",
@@ -39,7 +39,7 @@
       },
       "problemMatcher": ["$gcc"],
       "dependsOn": "Build active file",
-      "group": "build"
+      "group": { "build": true, "isDefault": true }
     },
     {
       "label": "Build All",
@@ -49,10 +49,7 @@
         "cwd": "${fileDirname}"
       },
       "problemMatcher": ["$gcc"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      "group": "build"
     },
     {
       "label": "Clean active file",
